@@ -3,7 +3,7 @@ package ua.nure.pakki.SummaryTask4.DataBase.DAO.DAOExtends;
 import org.apache.log4j.Logger;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.DAO;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.Util.ConnectionPool;
-import ua.nure.pakki.SummaryTask4.DataBase.Model.ModelExtendsion.Pilot;
+import ua.nure.pakki.SummaryTask4.DataBase.Model.ModelExtendsion.MemberOfTeamExtends.Pilot;
 import ua.nure.pakki.SummaryTask4.Exceptions.DAOExceptions;
 
 import java.sql.Connection;
@@ -25,7 +25,7 @@ public class PilotDAO extends DAO<Pilot> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);) {
 
-            statement.setLong(1, pilot.getIdPilot());
+            statement.setLong(1, pilot.getId());
             statement.setString(2, pilot.getFirstName());
             statement.setString(3, pilot.getLastName());
             statement.setInt(4,pilot.getAge());
@@ -68,7 +68,7 @@ public class PilotDAO extends DAO<Pilot> {
 
     @Override
     public boolean update(Pilot pilot) throws DAOExceptions {
-        LOG.info("update pilot with id = " + pilot.getIdPilot());
+        LOG.info("update pilot with id = " + pilot.getId());
         boolean rowsUpdated = false;
         String sql = "UPDATE pilot SET first_name = ?, last_name = ?, age = ? where idpilot = ?";
 
@@ -79,7 +79,7 @@ public class PilotDAO extends DAO<Pilot> {
             statement.setString(1, pilot.getFirstName());
             statement.setString(2, pilot.getLastName());
             statement.setInt(3, pilot.getAge());
-            statement.setLong(4, pilot.getIdPilot());
+            statement.setLong(4, pilot.getId());
 
             rowsUpdated = (statement.executeUpdate() > 0);
 
@@ -92,7 +92,7 @@ public class PilotDAO extends DAO<Pilot> {
 
     @Override
     public boolean delete(Pilot pilot) throws DAOExceptions {
-        LOG.info("delete pilot with id = " + pilot.getIdPilot());
+        LOG.info("delete pilot with id = " + pilot.getId());
         boolean rowsDeleted;
         String sql = "DELETE from pilot where idpilot = ?";
 
@@ -100,7 +100,7 @@ public class PilotDAO extends DAO<Pilot> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setLong(1, pilot.getIdPilot());
+            statement.setLong(1, pilot.getId());
             rowsDeleted = (statement.executeUpdate() > 0);
 
         } catch (SQLException ex) {
@@ -137,7 +137,7 @@ public class PilotDAO extends DAO<Pilot> {
         LOG.info("create new instance of pilot");
         Pilot pilot = new Pilot();
 
-        long idpilot = resultSet.getLong("idpilot");
+        int idpilot = resultSet.getInt("idpilot");
         String firstNameOfPilot = resultSet.getString("first_name");
         String lastNameOfPilot = resultSet.getString("last_name");
         int ageOfpilot = resultSet.getInt("age");

@@ -20,14 +20,14 @@ public class CreateRequestCommand extends Command {
         LOG.info("Creating new request");
 
         RequestDAO requestDAO = new RequestDAO();
-        long idRequest = Long.valueOf(request.getParameter("idRequest"));
-        long idTeam = Long.valueOf(request.getParameter("idTeam"));
-        long idVoyage = Long.valueOf(request.getParameter("idVoyage"));
+        int idRequest = Integer.valueOf(request.getParameter("idRequest"));
+        int idTeam = Integer.valueOf(request.getParameter("idTeam"));
+        int idVoyage = Integer.valueOf(request.getParameter("idVoyage"));
 
         LOG.trace("Creating new request instance");
 
         Request request1 = new Request();
-        request1.setIdRequest(idRequest);
+        request1.setId(idRequest);
         request1.setIdVoyage(idVoyage);
         request1.setIdTeam(idTeam);
         request1.setStatus(true);

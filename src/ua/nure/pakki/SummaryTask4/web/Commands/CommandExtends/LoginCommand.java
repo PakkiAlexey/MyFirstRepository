@@ -49,7 +49,7 @@ public class LoginCommand extends Command {
         try {
             user = userDAO.getUserByLogin(login);
             LOG.info("Getting user by login = " + login);
-            LOG.trace("Get user with id = " + user.getIdUser());
+            LOG.trace("Get user with id = " + user.getId());
         }catch (DAOExceptions ex){
             LOG.error("Cannot obtain connection", ex);
             throw new AppExceptions("Some problem with connection");

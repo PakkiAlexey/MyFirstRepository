@@ -3,6 +3,7 @@ package ua.nure.pakki.SummaryTask4.web.Commands.CommandExtends;
 import org.apache.log4j.Logger;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.DAO;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.DAOExtends.TeamDAO;
+import ua.nure.pakki.SummaryTask4.DataBase.DAO.DAOExtends.VoyageDAO;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.Factory.DAOFactory;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.Factory.DAOFactoryExtends.TeamDAOFactory;
 import ua.nure.pakki.SummaryTask4.DataBase.Model.ModelExtendsion.Team;
@@ -26,7 +27,15 @@ public class OrganizationTeamCommand extends Command {
         DAOFactory daoFactory = new TeamDAOFactory();
         TeamDAO teamDAO = new TeamDAO();
 
-        int id = Integer.valueOf(request.getParameter("teamId"));
+        int idVoyage = Integer.valueOf(request.getParameter("voyageId"));
+        int idTeam;
+        try{
+            idTeam = new VoyageDAO().getById(idVoyage).getIdTeam();
+        }catch (DAOExceptions ex){
+            LOG.error("Connection obtain problem", ex);
+            throw new AppExceptions("Problem with connection");
+        }
+
 
         String forward = Path.ERROR_PAGE;
         Team team = new Team();
@@ -34,9 +43,9 @@ public class OrganizationTeamCommand extends Command {
         ArrayList<Integer> stewardesses = new ArrayList<>();
 
         try{
-            team = teamDAO.getById(id);
-            pilots = teamDAO.getIdOfPilots(id);
-            stewardesses = teamDAO.getIdOfStewardesses(id);
+            team = teamDAO.getById(idTeam);
+            pilots = team.getPilots();
+            stewardesses = team.getStewardesses();
 
             request.setAttribute("team", team);
             LOG.trace("pilots " + pilots.size());

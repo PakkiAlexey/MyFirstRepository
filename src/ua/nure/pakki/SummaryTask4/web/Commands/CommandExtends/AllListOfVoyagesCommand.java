@@ -36,8 +36,24 @@ public class AllListOfVoyagesCommand extends Command {
             LOG.trace("Set attribute to voyages");
             request.setAttribute("voyages", voyages);
 
-            forward = Path.GUEST_PAGE;
+
+            switch (request.getParameter("forward")){
+                case "dispatcher" : {
+                    forward = Path.DISPATCHER_PAGE;
+                    break;
+                }
+                case  "guest" : {
+                    forward = Path.GUEST_PAGE;
+                    break;
+                }
+
+                case "admin" : {
+                    forward = Path.ADMIN_PAGE;
+                }
+
+            }
             LOG.trace("forward is " + forward);
+            System.out.println(forward);
 
         }catch (DAOExceptions ex){
             LOG.error("Connection problem", ex);

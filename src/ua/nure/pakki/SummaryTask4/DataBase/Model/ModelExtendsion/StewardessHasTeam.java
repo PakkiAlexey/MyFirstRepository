@@ -4,7 +4,7 @@ import ua.nure.pakki.SummaryTask4.DataBase.Model.Model;
 
 import java.util.Objects;
 
-public class StewardessHasTeam extends Model {
+public class StewardessHasTeam {
     private long idStewardess;
     private long idTeam;
 

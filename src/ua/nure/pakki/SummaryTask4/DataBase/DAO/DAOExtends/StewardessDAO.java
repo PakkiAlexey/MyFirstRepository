@@ -3,7 +3,7 @@ package ua.nure.pakki.SummaryTask4.DataBase.DAO.DAOExtends;
 import org.apache.log4j.Logger;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.DAO;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.Util.ConnectionPool;
-import ua.nure.pakki.SummaryTask4.DataBase.Model.ModelExtendsion.Stewardess;
+import ua.nure.pakki.SummaryTask4.DataBase.Model.ModelExtendsion.MemberOfTeamExtends.Stewardess;
 import ua.nure.pakki.SummaryTask4.Exceptions.DAOExceptions;
 
 import java.sql.Connection;
@@ -25,7 +25,7 @@ public class StewardessDAO extends DAO<Stewardess> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);) {
 
-            statement.setLong(1, stewardess.getIdStewardess());
+            statement.setLong(1, stewardess.getId());
             statement.setString(2, stewardess.getFirstName());
             statement.setString(3, stewardess.getLastName());
             statement.setInt(4,stewardess.getAge());
@@ -68,7 +68,7 @@ public class StewardessDAO extends DAO<Stewardess> {
 
     @Override
     public boolean update(Stewardess stewardess) throws DAOExceptions {
-        LOG.info("update stewardess with id = " + stewardess.getIdStewardess());
+        LOG.info("update stewardess with id = " + stewardess.getId());
         boolean rowsUpdated = false;
         String sql = "UPDATE stewardess SET first_name = ?, last_name = ?, age = ? where idstewardess = ?";
 
@@ -79,7 +79,7 @@ public class StewardessDAO extends DAO<Stewardess> {
             statement.setString(1, stewardess.getFirstName());
             statement.setString(2, stewardess.getLastName());
             statement.setInt(3, stewardess.getAge());
-            statement.setLong(4, stewardess.getIdStewardess());
+            statement.setLong(4, stewardess.getId());
 
             rowsUpdated = (statement.executeUpdate() > 0);
 
@@ -92,7 +92,7 @@ public class StewardessDAO extends DAO<Stewardess> {
 
     @Override
     public boolean delete(Stewardess stewardess) throws DAOExceptions {
-        LOG.info("delete stewardess with id = " + stewardess.getIdStewardess());
+        LOG.info("delete stewardess with id = " + stewardess.getId());
         boolean rowsDeleted;
         String sql = "DELETE from stewardess where idstewardess = ?";
 
@@ -100,7 +100,7 @@ public class StewardessDAO extends DAO<Stewardess> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setLong(1, stewardess.getIdStewardess());
+            statement.setLong(1, stewardess.getId());
             rowsDeleted = (statement.executeUpdate() > 0);
 
         } catch (SQLException ex) {
@@ -137,7 +137,7 @@ public class StewardessDAO extends DAO<Stewardess> {
         LOG.info("create new instance of stewardess");
         Stewardess stewardess = new Stewardess();
 
-        long idstewardess = resultSet.getLong("idstewardess");
+        int idstewardess = resultSet.getInt("idstewardess");
         String firstNameOfstewardess = resultSet.getString("first_name");
         String lastNameOfstewardess = resultSet.getString("last_name");
         int ageOfstewardess = resultSet.getInt("age");

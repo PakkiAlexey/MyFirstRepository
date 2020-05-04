@@ -5,13 +5,13 @@ import ua.nure.pakki.SummaryTask4.DataBase.Model.Model;
 import java.util.*;
 
 public class Team extends Model {
-    private long idTeam;
-    private long idNavigator;
-    private long idOperator;
+    private int idTeam;
+    private int idNavigator;
+    private int idOperator;
     private ArrayList<Integer> stewardesses;
     private ArrayList<Integer> pilots;
 
-    public Team(long idTeam, long idNavigator, long idOperator,long[] stewardesses, long[] pilots) {
+    public Team(int idTeam, int idNavigator, int idOperator,int[] stewardesses, int[] pilots) {
         this.idTeam = idTeam;
         this.idNavigator = idNavigator;
         this.idOperator = idOperator;
@@ -36,27 +36,27 @@ public class Team extends Model {
         this.pilots = pilots;
     }
 
-    public long getIdTeam() {
+    public int getId() {
         return idTeam;
     }
 
-    public void setIdTeam(long idTeam) {
+    public void setId(int idTeam) {
         this.idTeam = idTeam;
     }
 
-    public long getIdNavigator() {
+    public int getIdNavigator() {
         return idNavigator;
     }
 
-    public void setIdNavigator(long idNavigator) {
+    public void setIdNavigator(int idNavigator) {
         this.idNavigator = idNavigator;
     }
 
-    public long getIdOperator() {
+    public int getIdOperator() {
         return idOperator;
     }
 
-    public void setIdOperator(long idOperator) {
+    public void setIdOperator(int idOperator) {
         this.idOperator = idOperator;
     }
 

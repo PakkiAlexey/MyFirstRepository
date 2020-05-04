@@ -5,12 +5,14 @@ import ua.nure.pakki.SummaryTask4.DataBase.Model.Model;
 import java.util.Objects;
 
 public class Request extends Model {
-    private long id;
-    private long idTeam;
-    private long idVoyage;
+    private int id;
+    private int idTeam;
+    private int idVoyage;
     private boolean status;
+    private String massage;
 
-    public Request(long id, long idTeam, long idVoyage, boolean status) {
+    public Request(int id, int idTeam, int idVoyage, boolean status,String massage) {
+        this.massage = massage;
         this.id = id;
         this.idTeam = idTeam;
         this.idVoyage = idVoyage;
@@ -21,27 +23,27 @@ public class Request extends Model {
     }
 
     @Override
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setIdRequest(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getIdTeam() {
+    public int getIdTeam() {
         return idTeam;
     }
 
-    public void setIdTeam(long idTeam) {
+    public void setIdTeam(int idTeam) {
         this.idTeam = idTeam;
     }
 
-    public long getIdVoyage() {
+    public int getIdVoyage() {
         return idVoyage;
     }
 
-    public void setIdVoyage(long idVoyage) {
+    public void setIdVoyage(int idVoyage) {
         this.idVoyage = idVoyage;
     }
 
@@ -51,6 +53,14 @@ public class Request extends Model {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getMassage() {
+        return massage;
+    }
+
+    public void setMassage(String massage) {
+        this.massage = massage;
     }
 
     @Override

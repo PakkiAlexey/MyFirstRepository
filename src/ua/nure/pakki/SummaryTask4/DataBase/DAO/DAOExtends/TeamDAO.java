@@ -22,7 +22,7 @@ public class TeamDAO extends DAO<Team> {
         LOG.trace("Creating connection");
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);) {
-            statement.setLong(1, team.getIdTeam());
+            statement.setLong(1, team.getId());
             statement.setLong(2, team.getIdNavigator());
             statement.setLong(3, team.getIdOperator());
 
@@ -48,13 +48,13 @@ public class TeamDAO extends DAO<Team> {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
 
-            team.setIdTeam(id);
+            team.setId(id);
 
             if (resultSet.next()) {
-                long idOperator = resultSet.getLong("idoperator");
-                long idNavigator = resultSet.getLong("idnavigator");
+                int idOperator = resultSet.getInt("idoperator");
+                int idNavigator = resultSet.getInt("idnavigator");
 
-                team.setIdTeam(id);
+                team.setId(id);
                 team.setIdOperator(idOperator);
                 team.setIdNavigator(idNavigator);
             }
@@ -68,7 +68,7 @@ public class TeamDAO extends DAO<Team> {
 
     @Override
     public boolean update(Team team) throws DAOExceptions {
-        LOG.info("Update team with id = " + team.getIdTeam());
+        LOG.info("Update team with id = " + team.getId());
         boolean rowsUpdated;
         String sql = "UPDATE team SET idoperator = ?, idnavigator = ? where idteam = ?";
 
@@ -91,7 +91,7 @@ public class TeamDAO extends DAO<Team> {
 
     @Override
     public boolean delete(Team team) throws DAOExceptions {
-        LOG.info("delete team with id = " + team.getIdTeam());
+        LOG.info("delete team with id = " + team.getId());
         boolean rowsDeleted;
         String sql = "DELETE from team where idteam = ?";
 
@@ -99,7 +99,7 @@ public class TeamDAO extends DAO<Team> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);) {
 
-            statement.setLong(1, team.getIdTeam());
+            statement.setInt(1, team.getId());
             rowsDeleted = (statement.executeUpdate() > 0);
 
         } catch (SQLException ex) {

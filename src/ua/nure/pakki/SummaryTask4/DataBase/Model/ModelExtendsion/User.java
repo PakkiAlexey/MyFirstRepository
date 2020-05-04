@@ -6,24 +6,24 @@ import ua.nure.pakki.SummaryTask4.DataBase.Model.Model;
 import java.util.Objects;
 
 public class User extends Model {
-    private long idUser;
+    private int idUser;
     private String firstName;
     private String lastName;
     private String login;
     private String password;
-    private long idAirport;
+    private int idAirport;
     private String role;
 
     public static class Builder {
-        private long idUser;
+        private int idUser;
         private String firstName;
         private String lastName;
         private String login;
         private String password;
-        private long idAirport;
+        private int idAirport;
         private String role;
 
-        public Builder(long idUser) {
+        public Builder(int idUser) {
             this.idUser = idUser;
         }
 
@@ -51,7 +51,7 @@ public class User extends Model {
             return this;
         }
 
-        public Builder workingInAirport(long idAirport){
+        public Builder workingInAirport(int idAirport){
             this.idAirport = idAirport;
 
             return this;
@@ -81,7 +81,12 @@ public class User extends Model {
     public User() {
     }
 
-    public long getIdUser() {
+    @Override
+    public void setId(int idUser) {
+        this.idUser = idUser ;
+    }
+
+    public int getId() {
         return idUser;
     }
 
@@ -101,7 +106,7 @@ public class User extends Model {
         return password;
     }
 
-    public long getIdAirport() {
+    public int getIdAirport() {
         return idAirport;
     }
 

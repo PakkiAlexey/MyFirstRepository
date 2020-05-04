@@ -5,7 +5,7 @@ import ua.nure.pakki.SummaryTask4.DataBase.DAO.DAO;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.Util.ConnectionPool;
 
 
-import ua.nure.pakki.SummaryTask4.DataBase.Model.ModelExtendsion.Navigator;
+import ua.nure.pakki.SummaryTask4.DataBase.Model.ModelExtendsion.MemberOfTeamExtends.Navigator;
 import ua.nure.pakki.SummaryTask4.DataBase.Model.ModelExtendsion.Request;
 import ua.nure.pakki.SummaryTask4.Exceptions.DAOExceptions;
 
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class NavigatorDAO extends DAO<Navigator> {
-    private static final Logger LOG = Logger.getLogger(RequestDAO.class.getName());
+    private static final Logger LOG = Logger.getLogger(NavigatorDAO.class.getName());
 
     @Override
     public boolean insert(Navigator navigator) throws DAOExceptions {
@@ -28,7 +28,7 @@ public class NavigatorDAO extends DAO<Navigator> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);) {
 
-            statement.setLong(1, navigator.getidNavigator());
+            statement.setLong(1, navigator.getId());
             statement.setString(2, navigator.getFirstName());
             statement.setString(3, navigator.getLastName());
             statement.setInt(4,navigator.getAge());
@@ -71,7 +71,7 @@ public class NavigatorDAO extends DAO<Navigator> {
 
     @Override
     public boolean update(Navigator navigator) throws DAOExceptions {
-        LOG.info("update navigator with id = " + navigator.getidNavigator());
+        LOG.info("update navigator with id = " + navigator.getId());
         boolean rowsUpdated = false;
         String sql = "UPDATE navigator SET first_name = ?, last_name = ?, age = ? where idnavigator = ?";
 
@@ -82,7 +82,8 @@ public class NavigatorDAO extends DAO<Navigator> {
             statement.setString(1, navigator.getFirstName());
             statement.setString(2, navigator.getLastName());
             statement.setInt(3, navigator.getAge());
-            statement.setLong(4, navigator.getidNavigator());
+            statement.setInt(4,navigator.getId());
+
 
             rowsUpdated = (statement.executeUpdate() > 0);
 
@@ -96,7 +97,7 @@ public class NavigatorDAO extends DAO<Navigator> {
     @Override
 
     public boolean delete(Navigator navigator) throws DAOExceptions {
-        LOG.info("delete navigator with id = " + navigator.getidNavigator());
+        LOG.info("delete navigator with id = " + navigator.getId());
         boolean rowsDeleted;
         String sql = "DELETE from navigator where idnavigator = ?";
 
@@ -104,7 +105,7 @@ public class NavigatorDAO extends DAO<Navigator> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setLong(1, navigator.getidNavigator());
+            statement.setLong(1, navigator.getId());
             rowsDeleted = (statement.executeUpdate() > 0);
 
         } catch (SQLException ex) {
@@ -141,7 +142,7 @@ public class NavigatorDAO extends DAO<Navigator> {
         LOG.info("create entity of navigator");
         Navigator navigator = new Navigator();
 
-        long idNavigator = resultSet.getLong("idnavigator");
+        int idNavigator = resultSet.getInt("idnavigator");
         String firstNameOfNavigator = resultSet.getString("first_name");
         String lastNameOfNavigator = resultSet.getString("last_name");
         int ageOfNavigator = resultSet.getInt("age");

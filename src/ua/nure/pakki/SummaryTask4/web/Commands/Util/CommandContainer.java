@@ -19,10 +19,24 @@ public class CommandContainer {
         commands.put("selectVoyages", new SelectOfVoyagesCommand());
         commands.put("logout", new LogoutCommand());
         commands.put("findVoyage", new FindVoyageByIDCommand());
-        commands.put("allList", new AllListOfVoyagesCommand());
+        commands.put("changeStatus", new ChangeVoyageStatusCommand());
+        commands.put("ListOfVoyages", new AllListOfVoyagesCommand());
         commands.put("sortedList", new SortedListOfVoyagesCommand());
         commands.put("organizationTeam", new OrganizationTeamCommand());
         commands.put("noCommand", new NoCommand());
+        commands.put("listOfPersons", new ListOfPersonsCommand());
+        commands.put("updatePerson", new UpdatePersonCommand());
+        commands.put("getPerson", new GetPersonCommand());
+        commands.put("createPerson", new CreatePersonCommand());
+        commands.put("deletePerson", new DeletePersonCommand());
+        commands.put("getVoyage", new GetVoyageCommand());
+        commands.put("deleteVoyages", new DeleteVoyageCommand());
+        commands.put("updateVoyage", new UpdateVoyageCommand());
+        commands.put("listOfRequest", new GetListOfRequestCommand());
+        commands.put("closeRequest", new CloseRequestCommand());
+        commands.put("createVoyage", new CreateVoyageCommand());
+        commands.put("changeStatusVoyage", new ChangeVoyageStatusCommand());
+        commands.put("changeStatusRequest", new ChangeStatusRequestCommand());
 
     }
 

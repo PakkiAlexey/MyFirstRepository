@@ -6,10 +6,10 @@ import ua.nure.pakki.SummaryTask4.DataBase.Model.Model;
 import java.util.Objects;
 
 public class Airport extends Model {
-    private long idAirport;
+    private int idAirport;
     private String name;
 
-    public Airport(long idAirport, String name) {
+    public Airport(int idAirport, String name) {
         this.idAirport = idAirport;
         this.name = name;
     }
@@ -17,7 +17,7 @@ public class Airport extends Model {
     public Airport() {
     }
 
-    public void setIdAirport(long idAirport) {
+    public void setId(int idAirport) {
         this.idAirport = idAirport;
     }
 
@@ -25,7 +25,7 @@ public class Airport extends Model {
         this.name = name;
     }
 
-    public long getIdAirport() {
+    public int getId() {
         return idAirport;
     }
 

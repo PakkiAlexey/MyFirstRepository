@@ -17,7 +17,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class VoyageDAO extends DAO<Voyage> {
-    private static final Logger LOG = Logger.getLogger(RequestDAO.class.getName());
+    private static final Logger LOG = Logger.getLogger(VoyageDAO.class.getName());
 
     @Override
     public boolean insert(Voyage voyage) throws DAOExceptions {
@@ -30,9 +30,9 @@ public class VoyageDAO extends DAO<Voyage> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);) {
 
-            statement.setLong(1, voyage.getIdVoyage());
-            statement.setLong(2, voyage.getIdAirport());
-            statement.setLong(3, voyage.getIdTeam());
+            statement.setInt(1, voyage.getId());
+            statement.setInt(2, voyage.getIdAirport());
+            statement.setInt(3, voyage.getIdTeam());
             statement.setString(4, voyage.getPlaceOfSending());
             statement.setString(5, voyage.getPlaceOfArriving());
             statement.setString(6, voyage.getTimeOfSending());
@@ -58,7 +58,7 @@ public class VoyageDAO extends DAO<Voyage> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setLong(1, idvoyage);
+            statement.setInt(1, idvoyage);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
@@ -74,23 +74,22 @@ public class VoyageDAO extends DAO<Voyage> {
 
     @Override
     public boolean update(Voyage voyage) throws DAOExceptions {
-        LOG.info("update voyage with id = " + voyage.getIdVoyage());
+        LOG.info("update voyage with id = " + voyage.getId());
         boolean rowsUpdated;
-        String sql = "UPDATE voyage SET idairport = ?, idteam = ?, place_of_sending = ?,place_of_arriving = ?, " +
+        String sql = "UPDATE voyage SET  place_of_sending = ?,place_of_arriving = ?, " +
                 "time_of_sending = ?, time_of_arriving = ?,status = ? where idvoyage = ?";
 
         LOG.trace("Creating connection");
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setLong(1, voyage.getIdAirport());
-            statement.setLong(2, voyage.getIdTeam());
-            statement.setString(3, voyage.getPlaceOfSending());
-            statement.setString(4, voyage.getPlaceOfArriving());
-            statement.setString(5, voyage.getTimeOfSending());
-            statement.setString(6, voyage.getTimeOfArriving());
-            statement.setBoolean(7, voyage.isStatus());
-            statement.setLong(8,voyage.getIdVoyage());
+
+            statement.setString(1, voyage.getPlaceOfSending());
+            statement.setString(2, voyage.getPlaceOfArriving());
+            statement.setString(3, voyage.getTimeOfSending());
+            statement.setString(4, voyage.getTimeOfArriving());
+            statement.setBoolean(5, voyage.isStatus());
+            statement.setInt(6,voyage.getId());
 
             rowsUpdated = (statement.executeUpdate() > 0);
 
@@ -103,7 +102,7 @@ public class VoyageDAO extends DAO<Voyage> {
 
     @Override
     public boolean delete(Voyage voyage) throws DAOExceptions {
-        LOG.info("delete voyage with id = " + voyage.getIdVoyage());
+        LOG.info("delete voyage with id = " + voyage.getId());
         boolean rowsUpdated;
         String sql = "DELETE FROM voyage where idvoyage = ?";
 
@@ -111,7 +110,7 @@ public class VoyageDAO extends DAO<Voyage> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setLong(1, voyage.getIdVoyage());
+            statement.setInt(1, voyage.getId());
             rowsUpdated = (statement.executeUpdate() > 0);
 
         } catch (SQLException ex) {
@@ -185,12 +184,39 @@ public class VoyageDAO extends DAO<Voyage> {
     }
 
 
+    public boolean changeStatusOfVoyage(int id) throws DAOExceptions {
+        LOG.info("Changing status of voyage");
+
+        boolean rowsUpdated;
+
+        String sql = "UPDATE voyage set status = ? where idvoyage = ?";
+        Voyage voyage = getById(id);
+
+        LOG.trace("Create connection");
+        try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            LOG.trace("change voyage status");
+            statement.setBoolean(1,!voyage.isStatus());
+            statement.setInt(2,id);
+
+            rowsUpdated = (statement.executeUpdate() > 0);
+
+        } catch (SQLException ex) {
+            LOG.error("cannot obtain connection", ex);
+            throw new DAOExceptions("cannot obtain connection", ex);
+        }
+
+        return rowsUpdated;
+    }
+
+
     private Voyage createVoyage(ResultSet resultSet) throws SQLException {
         LOG.info("create new instance of voyage");
 
-        long idvoyage = resultSet.getLong("idvoyage");
-        long idAirport = resultSet.getLong("idairport");
-        long idTeam = resultSet.getLong("idteam");
+        int idvoyage = resultSet.getInt("idvoyage");
+        int idAirport = resultSet.getInt("idairport");
+        int idTeam = resultSet.getInt("idteam");
         String placeOfSending = resultSet.getString("place_of_sending");
         String placeOfArriving = resultSet.getString("place_of_arriving");
         String timeOfSending = resultSet.getString("time_of_sending");
@@ -214,7 +240,7 @@ public class VoyageDAO extends DAO<Voyage> {
     public ArrayList<Voyage> sortedByID(ArrayList<Voyage> list) throws DAOExceptions{
         LOG.info("Sort list of voyages by id");
         ArrayList<Voyage>  listForSorted = getAll();
-        listForSorted.sort((Voyage v1, Voyage v2) ->(int) (v1.getIdVoyage() - v2.getIdVoyage()));
+        listForSorted.sort((Voyage v1, Voyage v2) ->(int) (v1.getId() - v2.getId()));
 
         return listForSorted;
     }

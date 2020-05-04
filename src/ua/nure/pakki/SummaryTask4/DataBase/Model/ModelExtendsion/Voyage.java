@@ -4,17 +4,17 @@ import ua.nure.pakki.SummaryTask4.DataBase.Model.Model;
 import java.util.Objects;
 
 public class Voyage extends Model {
-    private long idVoyage;
+    private int idVoyage;
     private String name;
     private String placeOfSending;
     private String placeOfArriving;
     private String timeOfSending;
     private String timeOfArriving;
-    private long idTeam;
-    private long idAirport;
+    private int idTeam;
+    private int idAirport;
     private boolean status;
 
-    public long getIdTeam() {
+    public int getIdTeam() {
         return idTeam;
     }
 
@@ -25,7 +25,12 @@ public class Voyage extends Model {
         return status;
     }
 
-    public long getIdVoyage() {
+    @Override
+    public void setId(int idVoyage) {
+        this.idVoyage = idVoyage;
+    }
+
+    public int getId() {
         return idVoyage;
     }
 
@@ -33,7 +38,7 @@ public class Voyage extends Model {
         return placeOfSending + "-" + placeOfArriving;
     }
 
-    public long getIdAirport() {
+    public int getIdAirport() {
         return idAirport;
     }
 
@@ -55,17 +60,17 @@ public class Voyage extends Model {
 
 
     public static class Builder{
-        private long idVoyage;
+        private int idVoyage;
         private String name;
         private String placeOfSending;
         private String placeOfArriving;
         private String timeOfSending;
         private String timeOfArriving;
-        private long idTeam;
-        private long idAirport;
+        private int idTeam;
+        private int idAirport;
         private boolean status;
 
-        public Builder(long idVoyage){
+        public Builder(int idVoyage){
             this.idVoyage = idVoyage;
         }
 
@@ -75,13 +80,13 @@ public class Voyage extends Model {
             return this;
         }
 
-        public Builder withTeam(long idTeam){
+        public Builder withTeam(int idTeam){
             this.idTeam = idTeam;
 
             return this;
         }
 
-        public Builder fromAirport(long idAirport){
+        public Builder fromAirport(int idAirport){
             this.idAirport = idAirport;
 
             return this;

@@ -54,7 +54,7 @@ public class AirportDAO extends DAO<Airport> {
                 long idairport = resultSet.getLong("idairport");
                 String name = resultSet.getString("Name");
 
-                airport.setIdAirport(idAirport);
+                airport.setId(idAirport);
                 airport.setName(name);
 
             }
@@ -78,7 +78,7 @@ public class AirportDAO extends DAO<Airport> {
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, airport.getName());
-            statement.setLong(2, airport.getIdAirport());
+            statement.setLong(2, airport.getId());
 
             rowsUpdated = (statement.executeUpdate() > 0);
 
@@ -99,7 +99,7 @@ public class AirportDAO extends DAO<Airport> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setLong(1, airport.getIdAirport());
+            statement.setLong(1, airport.getId());
             rowsDeleted = (statement.executeUpdate() > 0);
 
         } catch (SQLException ex) {

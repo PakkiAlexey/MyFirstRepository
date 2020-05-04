@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SortedListOfVoyagesCommand extends Command {
-    private static final Logger LOG = Logger.getLogger(AirportDAO.class.getName());
+    private static final Logger LOG = Logger.getLogger(SelectOfVoyagesCommand.class.getName());
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, AppExceptions {
         LOG.info("Sort list of voyages started");
@@ -53,6 +53,5 @@ public class SortedListOfVoyagesCommand extends Command {
 
         return forward;
     }
-
 
 }

@@ -53,8 +53,8 @@ public class UserDAO extends DAO<User> {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()){
-                long idUser = resultSet.getLong("idUser");
-                long idAirport = resultSet.getLong("idAirport");
+                int idUser = resultSet.getInt("idUser");
+                int idAirport = resultSet.getInt("idAirport");
                 String password = resultSet.getString("Password");
                 String firstName = resultSet.getString("First_Name");
                 String lastName = resultSet.getString("Last_Name");

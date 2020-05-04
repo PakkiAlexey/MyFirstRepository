@@ -4,16 +4,24 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+<!--    <servlet>-->
+<!--        <servlet-name>/hello</servlet-name>-->
+<!--        <servlet-class>ua.nure.pakki.SummaryTask4.Hello</servlet-class>-->
+<!--    </servlet>-->
+
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>/hello</servlet-name>-->
+<!--        <url-pattern>/hello</url-pattern>-->
+<!--    </servlet-mapping>-->
     <servlet>
-        <servlet-name>/hello</servlet-name>
-        <servlet-class>ua.nure.pakki.SummaryTask4.Hello</servlet-class>
+        <servlet-name>Update</servlet-name>
+        <jsp-file>/WEB-INF/jsp/personUpdate.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>/hello</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>Update</servlet-name>
+        <url-pattern>/personUpdate.jsp</url-pattern>
     </servlet-mapping>
-
 		 <resource-ref>
         <res-ref-name>jdbc/mydatabase</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>

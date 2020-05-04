@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.DAO;
 import ua.nure.pakki.SummaryTask4.DataBase.DAO.Util.ConnectionPool;
 import ua.nure.pakki.SummaryTask4.DataBase.Model.ModelExtendsion.Request;
+import ua.nure.pakki.SummaryTask4.DataBase.Model.ModelExtendsion.Voyage;
 import ua.nure.pakki.SummaryTask4.Exceptions.DAOExceptions;
 
 import java.sql.Connection;
@@ -19,16 +20,17 @@ public class RequestDAO extends DAO<Request> {
     public boolean insert(Request request) throws DAOExceptions {
         boolean rowsInserted;
         LOG.info("Create new request");
-        String sql = "INSERT INTO request (idrequest,idteam,idvoyage, status) values (?,?,?,?)";
+        String sql = "INSERT INTO request (idrequest,idteam,idvoyage, status, massage) values (?,?,?,?,?)";
 
         LOG.trace("Creating connection");
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);) {
 
-            statement.setLong(1,request.getId());
-            statement.setLong(2, request.getIdTeam());
-            statement.setLong(3, request.getIdVoyage());
+            statement.setInt(1,request.getId());
+            statement.setInt(2, request.getIdTeam());
+            statement.setInt(3, request.getIdVoyage());
             statement.setBoolean(4, request.isStatus());
+            statement.setString(5,request.getMassage());
 
             rowsInserted = (statement.executeUpdate() > 0);
 
@@ -49,16 +51,16 @@ public class RequestDAO extends DAO<Request> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setLong(1, id);
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                long idrequest = id;
-                long idTeam = resultSet.getLong("idteam");
-                long idVoyage = resultSet.getLong("idvoyage");
+                int idrequest = id;
+                int idTeam = resultSet.getInt("idteam");
+                int idVoyage = resultSet.getInt("idvoyage");
                 boolean status = resultSet.getBoolean("status");
 
-                request.setIdRequest(idrequest);
+                request.setId(idrequest);
                 request.setIdTeam(idTeam);
                 request.setIdVoyage(idVoyage);
                 request.setStatus(status);
@@ -72,6 +74,32 @@ public class RequestDAO extends DAO<Request> {
         return request;
     }
 
+    public boolean changeStatusOfRequest(int id) throws DAOExceptions {
+        LOG.info("Changing status of voyage");
+
+        boolean rowsUpdated;
+
+        String sql = "UPDATE request set status = ? where idrequest = ?";
+        Request request = getById(id);
+
+        LOG.trace("Create connection");
+        try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            LOG.trace("change voyage status");
+            statement.setBoolean(1,!request.isStatus());
+            statement.setInt(2,id);
+
+            rowsUpdated = (statement.executeUpdate() > 0);
+
+        } catch (SQLException ex) {
+            LOG.error("cannot obtain connection", ex);
+            throw new DAOExceptions("cannot obtain connection", ex);
+        }
+
+        return rowsUpdated;
+    }
+
 
     @Override
     public boolean update(Request request) throws DAOExceptions {
@@ -83,10 +111,10 @@ public class RequestDAO extends DAO<Request> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setLong(1, request.getIdTeam());
-            statement.setLong(2, request.getIdVoyage());
+            statement.setInt(1, request.getIdTeam());
+            statement.setInt(2, request.getIdVoyage());
             statement.setBoolean(3, request.isStatus());
-            statement.setLong(4, request.getId());
+            statement.setInt(4, request.getId());
 
             rowsUpdated = (statement.executeUpdate() > 0);
 
@@ -107,7 +135,7 @@ public class RequestDAO extends DAO<Request> {
         try (Connection connection = ConnectionPool.getConnectionPool().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);) {
 
-            statement.setLong(1, request.getId());
+            statement.setInt(1, request.getId());
             rowsDeleted = (statement.executeUpdate() > 0);
 
         } catch (SQLException ex) {
@@ -130,14 +158,14 @@ public class RequestDAO extends DAO<Request> {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                long idRequest = resultSet.getInt("idrequest");
+                int idRequest = resultSet.getInt("idrequest");
                 int idTeam = resultSet.getInt("idteam");
                 int idVoyage = resultSet.getInt("idvoyage");
                 boolean status = resultSet.getBoolean("status");
 
                 Request request = new Request();
 
-                request.setIdRequest(idRequest);
+                request.setId(idRequest);
                 request.setIdTeam(idTeam);
                 request.setIdVoyage(idVoyage);
                 request.setStatus(status);

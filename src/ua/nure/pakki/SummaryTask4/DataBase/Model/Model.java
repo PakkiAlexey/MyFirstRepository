@@ -8,11 +8,7 @@ public abstract class Model implements Serializable {
 
     private long id;
 
-    public long getId() {
-        return id;
-    }
+    public abstract int getId();
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public abstract void setId(int id);
 }

@@ -5,10 +5,10 @@ import ua.nure.pakki.SummaryTask4.DataBase.Model.Model;
 import java.util.Objects;
 
 public class Role extends Model {
-    private long id;
+    private  int id;
     private String name;
 
-    public Role(long id, String name) {
+    public Role(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -17,11 +17,11 @@ public class Role extends Model {
     }
 
     @Override
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
