@@ -13,12 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class SavedUserListCommand extends Command {
     private static final Logger LOG = Logger.getLogger(SavedUserListCommand.class);
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, AppExceptions {
-        ArrayList<User> listOfSavedUsers = new ArrayList<>();
+        CopyOnWriteArrayList<User> listOfSavedUsers = new CopyOnWriteArrayList<>();
         String forward;
         UserDAO userDAO = new UserDAO();
 

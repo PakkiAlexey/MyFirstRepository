@@ -33,11 +33,9 @@
             </tr>
             <c:forEach var="user" items="${listOfUsers}">
                 <tr>
-                    <td><img src="\UsersListApp\web\WEB-INF\jsp\Avatar\1.jpg"></td>
                     <td><c:out value="${user.firstName}"/></td>
                     <td><c:out value="${user.lastName}"/></td>
                     <td><c:out value="${user.phone}"/></td>
-
                     <td>
                         <div style="text-align: center;">
                             <a href="controller?command=showEditUser&typeOfList=users&idUser=${user.idUser}">Edit</a>

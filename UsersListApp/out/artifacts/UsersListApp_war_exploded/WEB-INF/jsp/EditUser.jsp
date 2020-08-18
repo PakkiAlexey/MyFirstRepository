@@ -11,9 +11,10 @@
             var re = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
             if (re.test(str)) status.innerHTML = "Адрес правильный";
             else status.innerHTML = "Адрес неверный";
-            if(isEmpty(str)) status.innerHTML = "Поле пустое";
+            if (isEmpty(str)) status.innerHTML = "Поле пустое";
         }
-        function isEmpty(str){
+
+        function isEmpty(str) {
             return (str == null) || (str.length == 0);
         }
     </script>
@@ -39,7 +40,7 @@
         <table border="1" cellpadding="5">
             <caption>
                 <h2>
-                     Edit User
+                    Edit User
                 </h2>
             </caption>
 

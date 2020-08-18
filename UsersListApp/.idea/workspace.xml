@@ -6,7 +6,49 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfe99504-c4f5-4d14-bf5b-2d66c5b72da4" name="Default Changelist" comment="" />
+    <list default="true" id="cfe99504-c4f5-4d14-bf5b-2d66c5b72da4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/web/Listener/RequestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/DataBase/DAO/DAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/DataBase/DAO/DAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/DataBase/DAO/DAOExtends/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/DataBase/DAO/DAOExtends/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/Hello.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/AddNewUserCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/AddNewUserCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/DeleteUserCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/DeleteUserCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/EditUserCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/EditUserCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/SavedUserListCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/SavedUserListCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/ShowEditUserCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/ShowEditUserCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/UsersListCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Command/CommandExtend/UsersListCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Path.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/classes/web/Path.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/jsp/EditUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/jsp/EditUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/jsp/PhoneError.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/jsp/PhoneError.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/jsp/UsertList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UsersListApp_war_exploded/WEB-INF/jsp/UsertList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/DataBase/DAO/DAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UsersListApp/DataBase/DAO/DAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/DataBase/DAO/DAOExtends/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UsersListApp/DataBase/DAO/DAOExtends/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/Hello.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/AddNewUserCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/AddNewUserCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/DeleteUserCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/DeleteUserCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/EditUserCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/EditUserCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/SavedUserListCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/SavedUserListCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/ShowEditUserCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/ShowEditUserCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/UsersListCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UsersListApp/web/Command/CommandExtend/UsersListCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/web/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UsersListApp/web/Path.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UsersListApp/web/Path.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataBase/DAO/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataBase/DAO/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataBase/DAO/DAOExtends/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataBase/DAO/DAOExtends/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Hello.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/Command/CommandExtend/DeleteUserCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/Command/CommandExtend/DeleteUserCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/Command/CommandExtend/EditUserCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/Command/CommandExtend/EditUserCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/Command/CommandExtend/SavedUserListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/Command/CommandExtend/SavedUserListCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/Command/CommandExtend/UsersListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/Command/CommandExtend/UsersListCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/Command/Util/CommandContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/Command/Util/CommandContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/Listener/ContextListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/Path.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/EditUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/EditUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/PhoneError.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/PhoneError.jsp" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +95,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -66,12 +111,15 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1cBKUsygXgrdvUZ1WZsiJTGW1ut" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-8.0.15.jar!/" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="database.data.extractors.current.id" value="SQL Inserts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -232,10 +280,35 @@
       <workItem from="1590226754664" duration="24657000" />
       <workItem from="1590316328982" duration="21427000" />
       <workItem from="1590388361511" duration="11705000" />
+      <workItem from="1590502443646" duration="1804000" />
+      <workItem from="1590699299775" duration="7984000" />
+      <workItem from="1590774667571" duration="1088000" />
+      <workItem from="1590837014056" duration="3321000" />
+      <workItem from="1590844779834" duration="5060000" />
+      <workItem from="1590996318957" duration="3220000" />
+      <workItem from="1592223229215" duration="125000" />
+      <workItem from="1593697349239" duration="703000" />
+      <workItem from="1593774937106" duration="12000" />
+      <workItem from="1597237324964" duration="898000" />
+      <workItem from="1597316731294" duration="3317000" />
+      <workItem from="1597417936095" duration="3039000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -1,4 +1,4 @@
-package web;
+package web.Servlets;
 
 import Exceptions.AppExceptions;
 import org.apache.log4j.Logger;
@@ -28,6 +28,12 @@ public class Controller extends HttpServlet {
         process(req,resp);
     }
 
+    @Override
+    public void destroy() {
+        LOG.trace("Destroying servlet");
+        super.destroy();
+    }
+
     private void process(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         LOG.debug("Controller starts");
@@ -43,7 +49,7 @@ public class Controller extends HttpServlet {
         // execute command and get forward address
 
 
-        String forward = Path.ERROR_PAGE;
+        String forward = Path.ERROR_PAGE_PHONE;
         try {
             forward = command.execute(request, response);
         } catch (AppExceptions ex) {
@@ -54,6 +60,6 @@ public class Controller extends HttpServlet {
         LOG.debug("Controller finished, now go to forward address --> " + forward);
 
         request.getRequestDispatcher(forward).forward(request, response);
-        //response.sendRedirect(forward);
+
     }
 }

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class UserDAO extends DAO<User> {
 
@@ -99,8 +100,8 @@ public class UserDAO extends DAO<User> {
     }
 
     @Override
-    public ArrayList<User> getAll() throws DAOExceptions {
-        ArrayList<User> listOfUsers = new ArrayList<>();
+    public CopyOnWriteArrayList<User> getAll() throws DAOExceptions {
+        CopyOnWriteArrayList<User> listOfUsers = new  CopyOnWriteArrayList<>();
 
         String sql = "select * from users";
 

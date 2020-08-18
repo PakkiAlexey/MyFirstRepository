@@ -14,6 +14,7 @@ public class CommandContainer {
     private static Map<String, Command> commands = new HashMap<>();
 
 
+
     static {
         commands.put("savedUsers", new SavedUserListCommand());
         commands.put("users", new UsersListCommand());

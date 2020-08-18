@@ -2,7 +2,7 @@ package web;
 
 public class Path {
 
-    public static final String ERROR_PAGE_PHONE= "/WEB-INF/jsp/ProneError.jsp";
+    public static final String ERROR_PAGE_PHONE= "/WEB-INF/jsp/PhoneError.jsp";
     public static final String ERROR_PAGE= "/WEB-INF/jsp/Error.jsp";
     public static final String ERROR_PAGE_NAME= "/WEB-INF/jsp/NameError.jsp";
     public static final String ERROR_PAGE_EMAIL= "/WEB-INF/jsp/EmailError.jsp";

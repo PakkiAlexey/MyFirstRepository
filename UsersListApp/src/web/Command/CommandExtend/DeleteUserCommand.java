@@ -36,7 +36,6 @@ public class DeleteUserCommand extends Command {
             throw new AppExceptions("Connection problem",ex);
         }
 
-
         return forward;
     }
 }

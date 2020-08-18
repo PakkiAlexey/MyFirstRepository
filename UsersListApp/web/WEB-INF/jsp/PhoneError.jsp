@@ -11,6 +11,6 @@
     <title>Error</title>
 </head>
 <body>
-    <h2>User with current phone already exist</h2>
+    <h2>User with current phone has already exist</h2>
 </body>
 </html>
