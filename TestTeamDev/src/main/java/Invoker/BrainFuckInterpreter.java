@@ -1,90 +1,48 @@
 package Invoker;
 
 import Command.Command;
+import Command.CommandExtends.*;
+import Receiver.BrainFuckOperators;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class BrainFuckInterpreter {
-    private Command incrementTheDataPointerCommand;
-    private Command decrementTheDataPointerCommand;
-    private Command incrementTheByteCommand;
-    private Command decrementTheByteCommand;
-    private Command outputTheByteCommand;
-    private Command cycleCommand;
+    private BrainFuckOperators brainFuckOperators;
 
-    private BrainFuckInterpreter() {
-    }
+    public void interpret(String code) {
+        brainFuckOperators = new BrainFuckOperators(code);
+        BrainFuckInterpreter.CommandContainer commandContainer = new CommandContainer();
 
-    public void incrementTheDataPointer(){
-        incrementTheDataPointerCommand.execute();
-    }
+        for (int i = 0; i < code.length(); i++) {
+            if ((code.charAt(i) == '[') || code.charAt(i) == ']') {
+                brainFuckOperators.setCurrentPosition(i);
+                commandContainer.get(code.charAt(i)).execute();
+                i = brainFuckOperators.getCurrentPosition();
 
-    public void decrementTheDataPointer(){
-        decrementTheDataPointerCommand.execute();
-    }
+                continue;
+            }
 
-    public void incrementTheByte(){
-        incrementTheByteCommand.execute();
-    }
-
-    public void decrementTheByte(){
-        decrementTheByteCommand.execute();
-    }
-
-    public void outputTheByte(){
-        outputTheByteCommand.execute();
-    }
-
-    public void cycle(){
-        cycleCommand.execute();
-    }
-
-    public static Builder newBuilder(){
-        return new BrainFuckInterpreter().new Builder();
-    }
-
-
-    public class Builder {
-        private Builder() {
+            commandContainer.get(code.charAt(i)).execute();
         }
 
-        public Builder setIncrementTheDataPointer(Command incrementTheDataPointer) {
-            BrainFuckInterpreter.this.incrementTheDataPointerCommand = incrementTheDataPointer;
+    }
 
-            return this;
+    class CommandContainer {
+        private Map<Character, Command> commands = new HashMap<>();
+
+        {
+            commands.put('>', new IncrementTheDataPointerCommand(brainFuckOperators));
+            commands.put('<', new DecrementTheDataPointerCommand(brainFuckOperators));
+            commands.put('+', new IncrementTheByteCommand(brainFuckOperators));
+            commands.put('-', new DecrementTheByteCommand(brainFuckOperators));
+            commands.put('.', new OutputTheByteCommand(brainFuckOperators));
+            commands.put('[', new CycleCommand(brainFuckOperators));
+            commands.put(']', new CycleCommand(brainFuckOperators));
         }
 
-        public Builder setDecrementTheDataPointer(Command decrementTheDataPointer) {
-            BrainFuckInterpreter.this.decrementTheDataPointerCommand = decrementTheDataPointer;
-
-            return this;
-        }
-
-        public Builder setIncrementTheByte(Command incrementTheByte) {
-            BrainFuckInterpreter.this.incrementTheByteCommand = incrementTheByte;
-
-            return this;
-        }
-
-        public Builder setDecrementTheByte(Command decrementTheByte) {
-            BrainFuckInterpreter.this.decrementTheByteCommand = decrementTheByte;
-
-            return this;
-        }
-
-        public Builder setOutputTheByte(Command outputTheByte) {
-            BrainFuckInterpreter.this.outputTheByteCommand = outputTheByte;
-
-            return this;
-        }
-
-        public Builder setCycle(Command cycle) {
-            BrainFuckInterpreter.this.cycleCommand = cycle;
-
-            return this;
-        }
-
-        public BrainFuckInterpreter build() {
-
-            return BrainFuckInterpreter.this;
+        public Command get(Character commandName) {
+            return commands.get(commandName);
         }
     }
 }
