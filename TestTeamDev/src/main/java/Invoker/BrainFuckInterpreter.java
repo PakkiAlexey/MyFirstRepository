@@ -1,8 +1,11 @@
 package Invoker;
 
+
+import BrainFuckCode.BrainFuckCode;
 import Command.Command;
 import Command.CommandExtends.*;
 import Receiver.BrainFuckOperators;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,19 +14,22 @@ public class BrainFuckInterpreter {
     private BrainFuckOperators brainFuckOperators;
 
     public void interpret(String code) {
+
         brainFuckOperators = new BrainFuckOperators(code);
+        BrainFuckCode sequenceOFCommands = new BrainFuckCode(code);
+
         BrainFuckInterpreter.CommandContainer commandContainer = new CommandContainer();
 
-        for (int i = 0; i < code.length(); i++) {
-            if ((code.charAt(i) == '[') || code.charAt(i) == ']') {
+        for (int i = 0; i < sequenceOFCommands.getLengthOfSequenceOfCommands(); i++) {
+            if ((sequenceOFCommands.getTheBrainFuckCommand(i) == '[') || sequenceOFCommands.getTheBrainFuckCommand(i) == ']') {
                 brainFuckOperators.setCurrentPosition(i);
-                commandContainer.get(code.charAt(i)).execute();
+                commandContainer.get(sequenceOFCommands.getTheBrainFuckCommand(i)).execute();
                 i = brainFuckOperators.getCurrentPosition();
 
                 continue;
             }
 
-            commandContainer.get(code.charAt(i)).execute();
+            commandContainer.get(sequenceOFCommands.getTheBrainFuckCommand(i)).execute();
         }
 
     }
