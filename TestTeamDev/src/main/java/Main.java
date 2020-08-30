@@ -1,29 +1,24 @@
-import Command.Command;
-import Command.CommandExtends.*;
-import Exceptions.IncorrectInputException;
-import Invoker.BrainFuckInterpreter;
-import Receiver.BrainFuckOperators;
+import Commands.Command;
+import Compiler.BrainFuckCompiler;
+import Memory.Memory;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private static BrainFuckInterpreter brainFuckInterpreter;
-
     public static void main(String[] args) {
-        String code = getCode();
-
-        new BrainFuckInterpreter().interpret(code);
-
-    }
-
-    private static String getCode() {
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter the code");
+        System.out.println("Input code");
+        String code = in.nextLine();
 
-        return in.nextLine();
+        BrainFuckCompiler brainFuckCompiler = new BrainFuckCompiler();
+        List<Command> commandList = brainFuckCompiler.compile(code);
+
+        Memory memory = new Memory();
+
+        for (Command command : commandList) {
+            command.execute(memory);
+        }
+
     }
-
-
 }
-
